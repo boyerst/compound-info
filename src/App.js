@@ -18,10 +18,10 @@ function App() {
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
+          <VStack spacing={14}>
+            <Logo mb={10} h="40vmin" pointerEvents="none" />
+            <Text fontSize="xl" fontWeight="extrabold">
+              compound.info
             </Text>
             <Link
               color="teal.500"
@@ -30,7 +30,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Learn Chakra
+              <Code href="" fontSize="md">Enter App</Code>
             </Link>
           </VStack>
         </Grid>
