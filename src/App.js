@@ -12,6 +12,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Landing from './components/Landing'
 import Header from './components/Header'
+import { Utils } from './utils'
 
 
 
@@ -37,6 +38,7 @@ function App() {
 
         </Grid>
         <Header />
+        <Utils />
       </Box>
     </ChakraProvider>
   );
