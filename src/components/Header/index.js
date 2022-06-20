@@ -10,7 +10,11 @@ function Header() {
   const blockNumber = metaData && metaData._meta.block.number
   console.log("blockNumber: ", blockNumber)
 
-  
+  return (
+    <h1> HEADER </h1>
+  )
+
+
 }
 
 

@@ -34,11 +34,12 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
 
-          {isLanded && <Landing handleIsLanded={handleIsLanded} /> }
+          { isLanded 
+            ? <Landing handleIsLanded={handleIsLanded} />
+            : <Header />
+          }
 
         </Grid>
-        <Header />
-        <Utils />
       </Box>
     </ChakraProvider>
   );
