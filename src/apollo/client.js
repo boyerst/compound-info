@@ -1,8 +1,6 @@
 import {
   ApolloClient,
   InMemoryCache,
-  useQuery,
-  gql,
   HttpLink
 } from "@apollo/client";
 
