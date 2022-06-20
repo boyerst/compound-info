@@ -4,15 +4,19 @@ import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { ApolloProvider } from "@apollo/client";
+import { client } from '../src/apollo/client.js'
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <StrictMode>
-    <ColorModeScript />
-    <App />
-  </StrictMode>
+  <ApolloProvider client={client}>
+    <StrictMode>
+      <ColorModeScript />
+      <App />
+    </StrictMode>
+  </ApolloProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
