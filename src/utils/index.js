@@ -7,7 +7,7 @@ function Utils() {
 
   const { loading: metaLoading, error: metaError, data: metaData } = useQuery(META_DATA)
   const blockNumber = metaData && metaData._meta.block.number
-  console.log("blockNumber: ", blockNumber)
+  // console.log("blockNumber: ", blockNumber)
 
 }
 

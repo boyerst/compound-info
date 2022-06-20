@@ -10,8 +10,8 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import Landing from './components/Landing/Landing'
-import Utils from './utils/index.js'
+import Landing from './components/Landing'
+import Header from './components/Header'
 
 
 
@@ -36,7 +36,7 @@ function App() {
           {isLanded && <Landing handleIsLanded={handleIsLanded} /> }
 
         </Grid>
-        <Utils />
+        <Header />
       </Box>
     </ChakraProvider>
   );
