@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -10,29 +10,30 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import Landing from './components/Landing'
+
+
+
+
+
+
 
 function App() {
+
+  const [isLanded, setIsLanded] = useState(true)
+
+  const handleIsLanded = () => {
+    setIsLanded(false)
+  }
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={14}>
-            <Logo mb={10} h="40vmin" pointerEvents="none" />
-            <Text fontSize="xl" fontWeight="extrabold">
-              compound.info
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Code href="" fontSize="md">Enter App</Code>
-            </Link>
-          </VStack>
+
+          {isLanded && <Landing handleIsLanded={handleIsLanded} /> }
+
         </Grid>
       </Box>
     </ChakraProvider>
