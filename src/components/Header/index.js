@@ -7,7 +7,10 @@ import {
   Flex, 
   Menu,
   Stack,
-  Link
+  Link,
+  Wrap,
+  Spacer,
+  HStack
 
 } from '@chakra-ui/react'
 import { FaMoon, FaSun } from 'react-icons/fa'
@@ -37,29 +40,26 @@ const Header = (props) => {
 
   return (
     <Box>
-      <Flex h={10} alignItems='center' justifyContent='space-between'>
-          <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
-            <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
-          </Link>
-          <Box mr={1120} fontSize={12}>ETH Price: ${ethPrice}</Box>
-          <Flex alignItems='center'>
-            <Stack direction='row'>
-              <IconButton
-                size='md'
-                fontSize='lg'
-                aria-label={`Switch to ${text} mode`}
-                variant='ghost'
-                color='current'
-                mt={3}
-                mr={4}
-                onClick={toggleColorMode}
-                icon={<SwitchIcon />}
-                {...props}
-              />
-            </Stack>
-  
-          </Flex>    
-      </Flex>
+      <HStack h={10} >
+        <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
+          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
+        </Link>
+        <Box fontSize={12} >ETH Price: ${ethPrice}</Box>
+        <Spacer />
+        <IconButton
+          size='md'
+          fontSize='lg'
+          aria-label={`Switch to ${text} mode`}
+          variant='ghost'
+          color='current'
+
+          mt={3}
+          mr={4}
+          onClick={toggleColorMode}
+          icon={<SwitchIcon />}
+          {...props}
+        />
+      </HStack>
     </Box>
   )
 

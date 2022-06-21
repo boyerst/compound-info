@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Text,
   Link,
@@ -17,7 +17,7 @@ const Landing = props => {
   console.log(props)
 
   return (
-    <VStack spacing={14}>
+    <VStack spacing={14} mt={150}>
       <Logo mb={10} h="40vmin" pointerEvents="none" />
       <Text fontSize="xl" fontWeight="extrabold">
         compound.info
