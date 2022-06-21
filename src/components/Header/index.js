@@ -30,7 +30,7 @@ const Header = (props) => {
   return (
     <Box>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>HELLO</Box>
+          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
           <Flex alignItems={'center'}>
             <Stack direction={'row'}>
               <IconButton
@@ -39,7 +39,7 @@ const Header = (props) => {
                 aria-label={`Switch to ${text} mode`}
                 variant="ghost"
                 color="current"
-                marginLeft="2"
+                pr="4"
                 onClick={toggleColorMode}
                 icon={<SwitchIcon />}
                 {...props}
