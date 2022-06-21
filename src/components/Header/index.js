@@ -41,6 +41,7 @@ const Header = (props) => {
           <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
             <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
           </Link>
+          <Box mr={1120} fontSize={12}>ETH Price: ${ethPrice}</Box>
           <Flex alignItems='center'>
             <Stack direction='row'>
               <IconButton
