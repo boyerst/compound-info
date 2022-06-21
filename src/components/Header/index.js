@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   useColorMode, 
   useColorModeValue, 
   IconButton,
-  Box, 
-  Flex, 
-  Menu,
-  Stack,
+  Box,  
   Link,
-  Wrap,
   Spacer,
   HStack
 
 } from '@chakra-ui/react'
-import { Icon, CheckCircleIcon, WarningIcon, CircleIcon } from '@chakra-ui/icons'
+import { Icon } from '@chakra-ui/icons'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { formatUSD } from '../../utils'
 import { useQuery } from "@apollo/client"
@@ -41,23 +37,11 @@ const Header = (props) => {
   const blockNumber = metaData && metaData._meta.block.number
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
-  console.log(subgraphStatus)
 
-  
-
-
-  const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA, {
-    pollInterval: 100
-  })
+  const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA, {pollInterval: 100})
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
     
-
-
-
-  
- 
-
 
 
 
@@ -80,7 +64,6 @@ const Header = (props) => {
           aria-label={`Switch to ${text} mode`}
           variant='ghost'
           color='current'
-
           mt={3}
           mr={4}
           onClick={toggleColorMode}
@@ -97,3 +80,4 @@ const Header = (props) => {
 
 
 export default Header
+
