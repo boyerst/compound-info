@@ -6,7 +6,8 @@ import {
   Box, 
   Flex, 
   Menu,
-  Stack
+  Stack,
+  Link
 
 } from '@chakra-ui/react'
 import { FaMoon, FaSun } from 'react-icons/fa'
@@ -21,7 +22,8 @@ const Header = (props) => {
 
   const { loading: metaLoading, error: metaError, data: metaData } = useQuery(META_DATA)
   const blockNumber = metaData && metaData._meta.block.number
-  console.log("blockNumber: ", blockNumber)
+  // const blockNumberURL = {'https://etherscan.io/block' + {blockNumber}}
+  
 
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
@@ -30,7 +32,9 @@ const Header = (props) => {
   return (
     <Box>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
+          <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
+            <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
+          </Link>
           <Flex alignItems={'center'}>
             <Stack direction={'row'}>
               <IconButton
