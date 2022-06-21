@@ -12,7 +12,8 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Landing from './components/Landing'
 import Header from './components/Header'
-import { Utils } from './utils'
+import TabsGroup from './components/TabsGroup'
+
 
 
 
@@ -36,7 +37,11 @@ function App() {
 
           { isLanded 
             ? <Landing handleIsLanded={handleIsLanded} />
-            : <Header />
+            : 
+              <Box>
+                <Header />
+                <TabsGroup />
+              </Box>
           }
 
      {/*   </Grid>*/}
