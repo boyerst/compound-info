@@ -22,7 +22,7 @@ import { Utils } from './utils'
 
 function App() {
 
-  const [isLanded, setIsLanded] = useState(true)
+  const [isLanded, setIsLanded] = useState(false)
 
   const handleIsLanded = () => {
     setIsLanded(false)
@@ -31,15 +31,15 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
+        {/*<Grid minH="100vh" p={3}>*/}
+      
 
           { isLanded 
             ? <Landing handleIsLanded={handleIsLanded} />
             : <Header />
           }
 
-        </Grid>
+     {/*   </Grid>*/}
       </Box>
     </ChakraProvider>
   );
