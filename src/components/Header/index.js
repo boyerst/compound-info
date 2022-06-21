@@ -65,11 +65,14 @@ const Header = (props) => {
     <Box>
       <HStack h={10} >
         <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
-          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}
+          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>
+            {metaLoading ?  'Loading...' : 'Latest Synced Block: '} {blockNumber} 
             <CircleIcon mb={.5} ml={1} boxSize={2}/>
           </Box>
         </Link>
-        <Box fontSize={12} >ETH Price: ${formatUSD(ethPrice)}</Box>
+        <Box fontSize={12}>
+          {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatUSD(ethPrice)}
+        </Box>
         <Spacer />
         <IconButton
           size='md'
