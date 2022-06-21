@@ -22,7 +22,7 @@ import { Utils } from './utils'
 
 function App() {
 
-  const [isLanded, setIsLanded] = useState(true)
+  const [isLanded, setIsLanded] = useState(false)
 
   const handleIsLanded = () => {
     setIsLanded(false)

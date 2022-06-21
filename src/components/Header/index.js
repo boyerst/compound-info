@@ -14,7 +14,7 @@ import {
 
 } from '@chakra-ui/react'
 import { FaMoon, FaSun } from 'react-icons/fa'
-import Utils from '../../utils'
+import { formatUSD } from '../../utils'
 import { useQuery } from "@apollo/client"
 import { META_DATA, ETH_DATA } from '../../apollo/queries.js'
 
@@ -33,7 +33,13 @@ const Header = (props) => {
 
   const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA)
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
+
   console.log(ethPrice)
+
+
+
+  
+ 
 
 
 
@@ -44,7 +50,7 @@ const Header = (props) => {
         <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
           <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
         </Link>
-        <Box fontSize={12} >ETH Price: ${ethPrice}</Box>
+        <Box fontSize={12} >ETH Price: ${formatUSD(ethPrice)}</Box>
         <Spacer />
         <IconButton
           size='md'
