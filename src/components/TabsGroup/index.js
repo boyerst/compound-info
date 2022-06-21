@@ -5,7 +5,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 const TabsGroup = () => {
 
   return (
-    <Tabs>
+    <Tabs mt={30}>
       <TabList>
         <Tab>One</Tab>
         <Tab>Two</Tab>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   useColorMode, 
   useColorModeValue, 
@@ -13,6 +13,7 @@ import {
   HStack
 
 } from '@chakra-ui/react'
+import { Icon, CheckCircleIcon, WarningIcon, CircleIcon } from '@chakra-ui/icons'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { formatUSD } from '../../utils'
 import { useQuery } from "@apollo/client"
@@ -30,11 +31,25 @@ const Header = (props) => {
 
   const { loading: metaLoading, error: metaError, data: metaData } = useQuery(META_DATA)
   const blockNumber = metaData && metaData._meta.block.number
+  const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
+
+  console.log(subgraphStatus)
+
+  
+
 
   const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA)
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
-  console.log(ethPrice)
+const CircleIcon = (props) => (
+  <Icon viewBox='0 0 200 200' {...props}>
+    <path
+      fill='currentColor'
+      d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
+    />
+  </Icon>
+)
+  
 
 
 
@@ -48,7 +63,9 @@ const Header = (props) => {
     <Box>
       <HStack h={10} >
         <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
-          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}</Box>
+          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}
+            <CircleIcon boxSize={2}/>
+          </Box>
         </Link>
         <Box fontSize={12} >ETH Price: ${formatUSD(ethPrice)}</Box>
         <Spacer />

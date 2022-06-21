@@ -9,6 +9,7 @@ export const META_DATA = gql`
       block {
         number
       }
+      hasIndexingErrors
     }
   }
 `
