@@ -13,4 +13,12 @@ export const META_DATA = gql`
   }
 `
 
+export const ETH_DATA = gql`
+  query markets {
+    markets (where: {underlyingSymbol: "ETH"}) {
+      id
+      underlyingPriceUSD
+    }
+  }
+`
 
