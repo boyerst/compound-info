@@ -46,7 +46,9 @@ const Header = (props) => {
   
 
 
-  const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA)
+  const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA, {
+    pollInterval: 100
+  })
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
     
