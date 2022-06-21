@@ -28,6 +28,14 @@ const Header = (props) => {
   const text = useColorModeValue('dark', 'light');
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
+  const CircleIcon = (props) => (
+    <Icon viewBox='0 0 200 200' {...props}>
+      <path
+        fill={subgraphStatus === false ? 'lightgreen' : 'red'}
+        d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
+      />
+    </Icon>
+  )
 
   const { loading: metaLoading, error: metaError, data: metaData } = useQuery(META_DATA)
   const blockNumber = metaData && metaData._meta.block.number
@@ -41,15 +49,7 @@ const Header = (props) => {
   const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA)
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
-const CircleIcon = (props) => (
-  <Icon viewBox='0 0 200 200' {...props}>
-    <path
-      fill='currentColor'
-      d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
-    />
-  </Icon>
-)
-  
+    
 
 
 
@@ -64,7 +64,7 @@ const CircleIcon = (props) => (
       <HStack h={10} >
         <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
           <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>Latest Synced Block: {blockNumber}
-            <CircleIcon boxSize={2}/>
+            <CircleIcon mb={.5} ml={1} boxSize={2}/>
           </Box>
         </Link>
         <Box fontSize={12} >ETH Price: ${formatUSD(ethPrice)}</Box>
