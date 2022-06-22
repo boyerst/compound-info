@@ -9,7 +9,9 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Tooltip
 } from '@chakra-ui/react'
+import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { useQuery } from "@apollo/client"
 import { TOKENS_DATA } from '../../apollo/queries.js'
 import { formatNum } from '../../utils'
@@ -52,7 +54,13 @@ const Tokens = () => {
             <Th textAlign='center'>Supply Rate (Annual)</Th>
             <Th textAlign='center'>Borrow Rate (Annual)</Th>
             <Th>Total Borrows</Th>
-            <Th>Borrow Index</Th>
+            <Th>
+              Borrow Index
+              <Tooltip hasArrow placement='auto' closeDelay={500} label='The history of the markets borrow index return (Think S&P 500)'>
+                <InfoOutlineIcon ml={1}/>
+              </Tooltip>
+            </Th>
+
           </Tr>
         </Thead>
         {tokensLoading 
