@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { FaMoon, FaSun } from 'react-icons/fa'
-import { formatUSD } from '../../utils'
+import { formatNum } from '../../utils'
 import { useQuery } from "@apollo/client"
 import { META_DATA, ETH_DATA } from '../../apollo/queries.js'
 
@@ -69,7 +69,7 @@ const Header = (props) => {
           </Box>
         </Link>
         <Box fontSize={12}>
-          {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatUSD(ethPrice)}
+          {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatNum(ethPrice)}
         </Box>
         <Spacer />
         <IconButton

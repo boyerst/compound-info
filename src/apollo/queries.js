@@ -25,14 +25,17 @@ export const ETH_DATA = gql`
 
 export const TOKENS_DATA = gql`
   query tokensData {
-    markets (first: 99, orderBy: cash, orderDirection: desc) {
+    markets (orderBy: cash, orderDirection: desc) {
       id
       cash
       name
       symbol
       underlyingSymbol
+      underlyingName
       supplyRate
       borrowRate
+      totalBorrows
+      
 
     }
   }

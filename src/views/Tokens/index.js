@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { TOKENS_DATA } from '../../apollo/queries.js'
+import { formatNum } from '../../utils'
 
 
 
@@ -24,10 +25,6 @@ const Tokens = () => {
   const tokens = tokensData && tokensData.markets
 
   console.log(tokensData)
-
-  const firstTokenName = tokensData && tokensData.markets[0].name
-  console.log(firstTokenName)
-
 
 
 
@@ -47,27 +44,28 @@ const Tokens = () => {
         <Thead>
           <Tr>
             <Th>Asset</Th>
-            <Th>TVL</Th>
-            <Th>Borrow Rate</Th>
-            <Th>Supply Rate</Th>
+            <Th>Symbol</Th>
+            <Th>TVL (ETH)</Th>
             <Th>cToken</Th>
+            <Th>Supply Rate (Annual)</Th>
+            <Th>Borrow Rate (Annual)</Th>
           </Tr>
         </Thead>
-
-      {tokensLoading 
-        ? 'Loading Tokens...' 
-        : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, supplyRate, borrowRate } : tokensData_markets) => (
-        <Tbody  key={id}>
-          <Tr>
-            <Td>{underlyingSymbol}</Td>
-            <Td></Td>
-            <Td></Td>
-            <Td></Td>
-            <Td></Td>
-          </Tr>
-        </Tbody>
-        )
-      )}
+        {tokensLoading 
+          ? 'Loading Tokens...' 
+          : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, underlyingName, supplyRate, borrowRate, totalBorrows } : tokensData_markets) => (
+          <Tbody  key={id}>
+            <Tr>
+              <Td>{underlyingName}</Td>
+              <Td>{underlyingSymbol}</Td>
+              <Td>{formatNum(cash)}</Td>
+              <Td>{symbol}</Td>
+              <Td>{supplyRate} %</Td>
+              <Td>{borrowRate} %</Td>
+            </Tr>
+          </Tbody>
+          )
+        )}
         <Tfoot>
           <Tr>
             <Th></Th>
@@ -78,7 +76,6 @@ const Tokens = () => {
           </Tr>
         </Tfoot>
       </Table>
-
     </TableContainer>
   )
 }

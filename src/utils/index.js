@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client"
 
 
 
-export const formatUSD = (price) => {
+export const formatNum = (price) => {
   return Number.parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
 
 }
