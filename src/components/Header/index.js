@@ -33,17 +33,17 @@ const Header = (props) => {
   )
 
   const { loading: metaLoading, error: metaError, data: metaData, startPolling: metaPolling } = useQuery(META_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: updateMeMeta()})
+    fetchPolicy: 'cache-and-network', onCompleted: updateMeMeta() })
   const blockNumber = metaData && metaData._meta.block.number
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
 
-  const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling } = useQuery(ETH_DATA, { 
-    fetchPolicy: 'cache-and-network', onCompleted: updateMeEth()})
+  const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling: ethPolling } = useQuery(ETH_DATA, { 
+    fetchPolicy: 'cache-and-network', onCompleted: updateMeEth() })
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
   useEffect(() => {
-    startPolling(1000)
+    ethPolling(1000)
     metaPolling(1000)
   })
 

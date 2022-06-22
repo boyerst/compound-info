@@ -12,7 +12,7 @@ const TabsGroup = () => {
       <TabList>
         <Image src={Logo} htmlHeight='50' htmlWidth='50' mx={3} mb={2} mr={4} pointerEvents="none" />
         <Tab>One</Tab>
-        <Tab>Two</Tab>
+        <Tab>Tokens</Tab>
         <Tab>Three</Tab>
       </TabList>
 
@@ -22,7 +22,6 @@ const TabsGroup = () => {
           <Compound />
         </TabPanel>
         <TabPanel>
-          <p>two!</p>
           <Tokens />
         </TabPanel>
         <TabPanel>
