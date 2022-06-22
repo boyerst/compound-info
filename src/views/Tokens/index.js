@@ -21,8 +21,15 @@ const Tokens = () => {
 
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: updateMe() })
-  const cash = tokensData && tokensData.markets[0].cash
-  console.log(cash)
+  const tokens = tokensData && tokensData.markets
+
+  console.log(tokensData)
+
+  const firstTokenName = tokensData && tokensData.markets[0].name
+  console.log(firstTokenName)
+
+
+
 
   useEffect(() => {
     tokensPolling(1000)
@@ -35,7 +42,7 @@ const Tokens = () => {
 
   return (
     <TableContainer>
-      <Table variant='simple'>
+      <Table variant='simple' fontSize={14}>
         {/*<TableCaption></TableCaption>*/}
         <Thead>
           <Tr>
@@ -46,15 +53,21 @@ const Tokens = () => {
             <Th>cToken</Th>
           </Tr>
         </Thead>
-        <Tbody>
+
+      {tokensLoading 
+        ? 'Loading Tokens...' 
+        : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, supplyRate, borrowRate } : tokensData_markets) => (
+        <Tbody  key={id}>
           <Tr>
-            <Td>USDC</Td>
+            <Td>{underlyingSymbol}</Td>
             <Td></Td>
             <Td></Td>
             <Td></Td>
             <Td></Td>
           </Tr>
         </Tbody>
+        )
+      )}
         <Tfoot>
           <Tr>
             <Th></Th>
@@ -65,6 +78,7 @@ const Tokens = () => {
           </Tr>
         </Tfoot>
       </Table>
+
     </TableContainer>
   )
 }

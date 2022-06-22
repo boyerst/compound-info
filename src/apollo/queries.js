@@ -4,7 +4,7 @@ import { gql } from "@apollo/client";
 
 
 export const META_DATA = gql`
-  query _meta {
+  query metaData {
     _meta {
       block {
         number
@@ -15,7 +15,7 @@ export const META_DATA = gql`
 `
 
 export const ETH_DATA = gql`
-  query markets {
+  query ethData {
     markets (where: {underlyingSymbol: "ETH"}) {
       id
       underlyingPriceUSD
@@ -24,9 +24,16 @@ export const ETH_DATA = gql`
 `
 
 export const TOKENS_DATA = gql`
-  query markets {
-    markets (first: 10, orderBy: cash, orderDirection: desc) {
+  query tokensData {
+    markets (first: 99, orderBy: cash, orderDirection: desc) {
+      id
       cash
+      name
+      symbol
+      underlyingSymbol
+      supplyRate
+      borrowRate
+
     }
   }
 `
