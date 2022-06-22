@@ -5,6 +5,8 @@ import { Box } from '@chakra-ui/react'
 
 const Compound = () => {
 
+  
+
   return (
     <Box>
       COMPOUND DATA

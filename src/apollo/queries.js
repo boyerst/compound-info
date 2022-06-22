@@ -23,3 +23,11 @@ export const ETH_DATA = gql`
   }
 `
 
+export const TOKENS_DATA = gql`
+  query markets {
+    markets (first: 10, orderBy: cash, orderDirection: desc) {
+      cash
+    }
+  }
+`
+
