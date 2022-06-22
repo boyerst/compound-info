@@ -48,8 +48,8 @@ const Tokens = () => {
             <Th>Symbol</Th>
             <Th>TVL (ETH)</Th>
             <Th>cToken</Th>
-            <Th>Supply Rate (Annual)</Th>
-            <Th>Borrow Rate (Annual)</Th>
+            <Th textAlign='center'>Supply Rate (Annual)</Th>
+            <Th textAlign='center'>Borrow Rate (Annual)</Th>
           </Tr>
         </Thead>
         {tokensLoading 
@@ -61,8 +61,8 @@ const Tokens = () => {
               <Td>{underlyingSymbol}</Td>
               <Td>{formatNum(cash)}</Td>
               <Td>{symbol}</Td>
-              <Td>{formatPercentage(supplyRate)} %</Td>
-              <Td>{formatPercentage(borrowRate)} %</Td>
+              <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
+              <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
             </Tr>
           </Tbody>
           )
