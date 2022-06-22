@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   useColorMode, 
   useColorModeValue, 
@@ -7,7 +7,6 @@ import {
   Link,
   Spacer,
   HStack
-
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { FaMoon, FaSun } from 'react-icons/fa'
@@ -38,8 +37,16 @@ const Header = (props) => {
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
 
-  const { loading: ethDataLoading, error: ethDataError, data: ethData } = useQuery(ETH_DATA, {pollInterval: 100})
+  const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling } = useQuery(ETH_DATA, {pollInterval: 1000, fetchPolicy: 'cache-and-network', onCompleted: updateMe()})
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
+
+  useEffect(() => {
+    startPolling(7000)
+  })
+
+  function updateMe() {
+    console.log("QUERIED!!!")
+  }
 
     
 
