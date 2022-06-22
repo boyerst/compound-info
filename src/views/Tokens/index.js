@@ -13,6 +13,7 @@ import {
 import { useQuery } from "@apollo/client"
 import { TOKENS_DATA } from '../../apollo/queries.js'
 import { formatNum } from '../../utils'
+import { formatPercentage } from '../../utils'
 
 
 
@@ -60,8 +61,8 @@ const Tokens = () => {
               <Td>{underlyingSymbol}</Td>
               <Td>{formatNum(cash)}</Td>
               <Td>{symbol}</Td>
-              <Td>{supplyRate} %</Td>
-              <Td>{borrowRate} %</Td>
+              <Td>{formatPercentage(supplyRate)} %</Td>
+              <Td>{formatPercentage(borrowRate)} %</Td>
             </Tr>
           </Tbody>
           )
