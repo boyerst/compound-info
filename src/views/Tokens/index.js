@@ -39,30 +39,36 @@ const Tokens = () => {
   }
 
   return (
-    <TableContainer>
+    <TableContainer mt={15}>
       <Table variant='simple' fontSize={14}>
         {/*<TableCaption></TableCaption>*/}
         <Thead>
           <Tr>
             <Th>Asset</Th>
             <Th>Symbol</Th>
+            <Th>Price</Th>
             <Th>TVL (ETH)</Th>
             <Th>cToken</Th>
             <Th textAlign='center'>Supply Rate (Annual)</Th>
             <Th textAlign='center'>Borrow Rate (Annual)</Th>
+            <Th>Total Borrows</Th>
+            <Th>Borrow Index</Th>
           </Tr>
         </Thead>
         {tokensLoading 
           ? 'Loading Tokens...' 
-          : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, underlyingName, supplyRate, borrowRate, totalBorrows } : tokensData_markets) => (
+          : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, underlyingName, underlyingPriceUSD, supplyRate, borrowRate, totalBorrows, borrowIndex } : tokensData_markets) => (
           <Tbody  key={id}>
             <Tr>
               <Td>{underlyingName}</Td>
               <Td>{underlyingSymbol}</Td>
+              <Td>$ {formatNum(underlyingPriceUSD)}</Td>
               <Td>{formatNum(cash)}</Td>
               <Td>{symbol}</Td>
               <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
               <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
+              <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
+              <Td>{formatNum(borrowIndex)}</Td>
             </Tr>
           </Tbody>
           )

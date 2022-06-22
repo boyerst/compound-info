@@ -32,10 +32,12 @@ export const TOKENS_DATA = gql`
       symbol
       underlyingSymbol
       underlyingName
+      underlyingPriceUSD  
       supplyRate
       borrowRate
       totalBorrows
-      
+      borrowIndex
+
 
     }
   }
