@@ -32,20 +32,27 @@ const Header = (props) => {
     </Icon>
   )
 
-  const { loading: metaLoading, error: metaError, data: metaData } = useQuery(META_DATA)
+  const { loading: metaLoading, error: metaError, data: metaData, startPolling: metaPolling } = useQuery(META_DATA, {
+    fetchPolicy: 'cache-and-network', onCompleted: updateMeMeta()})
   const blockNumber = metaData && metaData._meta.block.number
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
 
-  const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling } = useQuery(ETH_DATA, {pollInterval: 1000, fetchPolicy: 'cache-and-network', onCompleted: updateMe()})
+  const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling } = useQuery(ETH_DATA, { 
+    fetchPolicy: 'cache-and-network', onCompleted: updateMeEth()})
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
   useEffect(() => {
-    startPolling(7000)
+    startPolling(1000)
+    metaPolling(1000)
   })
 
-  function updateMe() {
-    console.log("QUERIED!!!")
+  // Temporary functions until find pollInterval fix
+  function updateMeEth() {
+    console.log("Queried ETH_DATA")
+  }
+  function updateMeMeta() {
+    console.log("Queried META_DATA")
   }
 
     
