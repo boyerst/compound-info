@@ -13,6 +13,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Landing from './components/Landing'
 import Header from './components/Header'
 import TabsGroup from './components/TabsGroup'
+import Footer from './components/Footer'
 
 
 
@@ -41,6 +42,7 @@ function App() {
               <Box>
                 <Header />
                 <TabsGroup />
+                <Footer />
               </Box>
           }
 
