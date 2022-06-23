@@ -72,6 +72,12 @@ const Header = (props) => {
           {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatNum(ethPrice)}
         </Box>
         <Spacer />
+        <Link fontSize={16} px={2} href='https://compound.finance/docs' rel='noopener noreferrer' isExternal>
+          Docs
+        </Link>
+        <Link fontSize={16} pr={8} href='https://compound.finance' rel='noopener noreferrer' isExternal>
+          App
+        </Link>
         <IconButton
           size='md'
           fontSize='lg'

@@ -64,7 +64,7 @@ const Tokens = () => {
             <Th>Asset</Th>
             <Th>Symbol</Th>
             <Th>Price</Th>
-            <Th>TVL (Ξ)</Th>
+            <Th textAlign='center'>TVL (Ξ)</Th>
             <Th>cToken</Th>
             <Th textAlign='center'>Supply Rate (Annual)</Th>
             <Th textAlign='center'>Borrow Rate (Annual)</Th>
@@ -94,7 +94,7 @@ const Tokens = () => {
               <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
               <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
               <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
-              <Td>{formatNum(borrowIndex)}</Td>
+              <Td textAlign='center'>{formatNum(borrowIndex)}</Td>
             </Tr>
           </Tbody>
           )
