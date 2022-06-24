@@ -13,3 +13,7 @@ export const formatPercentage = (num) => {
 
 }
 
+export const formatDate = (date) => {
+  return new Date(date * 1000).toLocaleString('en-GB', {timeZone: 'UTC'})   
+}
+

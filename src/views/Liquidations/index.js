@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
+import { formatDate } from '../../utils'
 
 
 const Liquidations = () => {
@@ -56,7 +57,7 @@ const Liquidations = () => {
           : liquidationsData.liquidationEvents.map(({ blockTime } : liquidationsData_liquidationEvents) => (
           <Tbody>
             <Tr>
-              <Td>{blockTime}</Td>
+              <Td>{formatDate(blockTime)}</Td>
               <Td></Td>
               <Td></Td>
               <Td></Td>
