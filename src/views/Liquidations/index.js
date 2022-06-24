@@ -58,7 +58,11 @@ const Liquidations = () => {
           <Tbody>
             <Tr>
               <Td>{formatDate(blockTime)}</Td>
-              <Td>{from}</Td>
+              <Td>
+              {from ? from.substring(0, 6) : '0x0'}
+              ...
+              {from ? from.substring(38, 42) : ''}
+              </Td>
               <Td></Td>
               <Td></Td>
               <Td></Td>
