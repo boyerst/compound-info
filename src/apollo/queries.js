@@ -51,9 +51,9 @@ export const LIQUIDATIONS_DATA = gql`
       from
       amount
       cTokenSymbol
+      to
       underlyingRepayAmount
       
-      to
       underlyingSymbol
     }
   }

@@ -43,9 +43,11 @@ const Liquidations = () => {
           <Tr>
             <Th>Time</Th>
             <Th>Liquidatee</Th>
-            <Th textTransform='none'>AMOUNT (cTOKENS)</Th>
+            <Th>Loan Asset</Th>
+            <Th textTransform='none'>AMOUNT SEIZED (cTOKENS)</Th>
             <Th textTransform='none'>cTOKEN</Th>
-            <Th>Amount (Collateral)</Th>
+            <Th>Liquidator</Th>
+            <Th>Amount Repaid (Collateral)</Th>
             <Th>Collateral</Th>
             <Th></Th>
             <Th></Th>
@@ -59,6 +61,7 @@ const Liquidations = () => {
               from, 
               amount, 
               cTokenSymbol, 
+              to,
               underlyingRepayAmount, 
               underlyingSymbol 
             } : liquidationsData_liquidationEvents) => (
@@ -70,8 +73,10 @@ const Liquidations = () => {
                 ...
                 {from ? from.substring(38, 42) : ''}
               </Td>
+              <Td>{underlyingSymbol}</Td>
               <Td>{formatNum(amount)} {cTokenSymbol}</Td>
               <Td>{cTokenSymbol}</Td>
+              <Td>{to}</Td>
               <Td>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
               <Td>{underlyingSymbol}</Td>
               <Td></Td>
