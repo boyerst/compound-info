@@ -45,8 +45,8 @@ const Liquidations = () => {
             <Th>Liquidatee</Th>
             <Th textTransform='none'>AMOUNT (cTOKENS)</Th>
             <Th textTransform='none'>cTOKEN</Th>
-            <Th></Th>
-            <Th></Th>
+            <Th>Amount (Collateral)</Th>
+            <Th>Collateral</Th>
             <Th></Th>
             <Th></Th>
             <Th></Th>
@@ -54,7 +54,14 @@ const Liquidations = () => {
         </Thead>
         {liquidationsLoading 
           ? 'Loading Liquidations...' 
-          : liquidationsData.liquidationEvents.map(({ blockTime, from, amount, cTokenSymbol } : liquidationsData_liquidationEvents) => (
+          : liquidationsData.liquidationEvents.map(({ 
+              blockTime, 
+              from, 
+              amount, 
+              cTokenSymbol, 
+              underlyingRepayAmount, 
+              underlyingSymbol 
+            } : liquidationsData_liquidationEvents) => (
           <Tbody>
             <Tr>
               <Td>{formatDate(blockTime)}</Td>
@@ -64,9 +71,9 @@ const Liquidations = () => {
                 {from ? from.substring(38, 42) : ''}
               </Td>
               <Td>{formatNum(amount)} {cTokenSymbol}</Td>
-              <Td>{cTokenSymbol.toLowerCase()}</Td>
-              <Td></Td>
-              <Td></Td>
+              <Td>{cTokenSymbol}</Td>
+              <Td>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
+              <Td>{underlyingSymbol}</Td>
               <Td></Td>
               <Td></Td>
               <Td></Td>

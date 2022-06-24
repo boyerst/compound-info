@@ -80,7 +80,19 @@ const Tokens = () => {
         </Thead>
         {tokensLoading 
           ? 'Loading Tokens...' 
-          : tokensData.markets.map(({ id, cash, name, symbol, underlyingSymbol, underlyingName, underlyingPriceUSD, supplyRate, borrowRate, totalBorrows, borrowIndex } : tokensData_markets) => (
+          : tokensData.markets.map(({ 
+              id, 
+              cash, 
+              name, 
+              symbol, 
+              underlyingSymbol, 
+              underlyingName, 
+              underlyingPriceUSD, 
+              supplyRate, 
+              borrowRate, 
+              totalBorrows, 
+              borrowIndex 
+            } : tokensData_markets) => (
           <Tbody  key={id}>
             <Tr>
               <Td fontWeight='extrabold'>{underlyingName}</Td>
