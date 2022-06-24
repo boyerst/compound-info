@@ -1,5 +1,17 @@
 import React, { useEffect } from 'react';
-import { Box } from '@chakra-ui/react'
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+  Tooltip,
+  Image
+} from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
 
@@ -23,9 +35,51 @@ const Liquidations = () => {
   
 
   return (
-    <Box>
-      LIQUIDATIONS
-    </Box>
+ <TableContainer mt={15}>
+      <Table variant='simple' fontSize={14}>
+        {/*<TableCaption></TableCaption>*/}
+        <Thead>
+          <Tr>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+          </Tr>
+        </Thead>
+        {liquidationsLoading 
+          ? 'Loading Liquidations...' 
+          : liquidationsData.liquidationEvents.map(({  } : liquidationsData_liquidationEvents) => (
+          <Tbody>
+            <Tr>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+            </Tr>
+          </Tbody>
+          )
+        )}
+        <Tfoot>
+          <Tr>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+          </Tr>
+        </Tfoot>
+      </Table>
+    </TableContainer>
   )
 }
 
