@@ -40,7 +40,7 @@ const Liquidations = () => {
         {/*<TableCaption></TableCaption>*/}
         <Thead>
           <Tr>
-            <Th></Th>
+            <Th>Time</Th>
             <Th></Th>
             <Th></Th>
             <Th></Th>
@@ -53,10 +53,10 @@ const Liquidations = () => {
         </Thead>
         {liquidationsLoading 
           ? 'Loading Liquidations...' 
-          : liquidationsData.liquidationEvents.map(({  } : liquidationsData_liquidationEvents) => (
+          : liquidationsData.liquidationEvents.map(({ blockTime } : liquidationsData_liquidationEvents) => (
           <Tbody>
             <Tr>
-              <Td></Td>
+              <Td>{blockTime}</Td>
               <Td></Td>
               <Td></Td>
               <Td></Td>

@@ -15,7 +15,7 @@ const TabsGroup = () => {
         <Image src={Logo} htmlHeight='50' htmlWidth='50' mx={3} mb={2} mr={4} pointerEvents="none" />
         <Tab>One</Tab>
         <Tab>Tokens</Tab>
-        <Tab>Three</Tab>
+        <Tab>Liquidations</Tab>
       </TabList>
 
       <TabPanels>
