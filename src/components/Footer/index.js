@@ -28,7 +28,7 @@ const Footer = () => {
         // align={{ base: 'center', md: 'center' }}
         align={'center'}
       >
-      <Text fontSize={14}>© 2022 Compound.Info</Text>
+      <Text fontSize={12}>© 2022 Compound.Info</Text>
         <Stack direction='row'>
           <Button  leftIcon={<FaDiscord />} rounded={'full'} size='xs'>
             Discord

@@ -3,6 +3,8 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Image } from '@chakra-ui/react
 import Logo from '../../assets/compound.png';
 import Compound from '../../views/Compound'
 import Tokens from '../../views/Tokens'
+import Liquidations from '../../views/Liquidations'
+
 
 
 const TabsGroup = () => {
@@ -25,7 +27,7 @@ const TabsGroup = () => {
           <Tokens />
         </TabPanel>
         <TabPanel>
-          <p>three!</p>
+          <Liquidations />
         </TabPanel>
       </TabPanels>
     </Tabs>      
