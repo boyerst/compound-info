@@ -43,3 +43,32 @@ export const TOKENS_DATA = gql`
   }
 `
 
+
+export const LIQUIDATIONS_DATA = gql`
+  query liquidationsData {
+    liquidationEvents (first: 5, orderBy: blockTime, orderDirection: desc) {
+      amount
+      underlyingRepayAmount
+      to
+      from
+      blockTime
+      cTokenSymbol
+      underlyingSymbol
+    }
+  }
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
