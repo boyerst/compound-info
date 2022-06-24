@@ -50,10 +50,10 @@ export const LIQUIDATIONS_DATA = gql`
       blockTime
       from
       amount
+      cTokenSymbol
       
       underlyingRepayAmount
       to
-      cTokenSymbol
       underlyingSymbol
     }
   }

@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
-import { formatDate } from '../../utils'
+import { formatDate, formatNum } from '../../utils'
 
 
 const Liquidations = () => {
@@ -43,8 +43,8 @@ const Liquidations = () => {
           <Tr>
             <Th>Time</Th>
             <Th>Liquidatee</Th>
-            <Th>Amount (cTokens)</Th>
-            <Th></Th>
+            <Th textTransform='none'>AMOUNT (cTOKENS)</Th>
+            <Th textTransform='none'>cTOKEN</Th>
             <Th></Th>
             <Th></Th>
             <Th></Th>
@@ -54,7 +54,7 @@ const Liquidations = () => {
         </Thead>
         {liquidationsLoading 
           ? 'Loading Liquidations...' 
-          : liquidationsData.liquidationEvents.map(({ blockTime, from, amount } : liquidationsData_liquidationEvents) => (
+          : liquidationsData.liquidationEvents.map(({ blockTime, from, amount, cTokenSymbol } : liquidationsData_liquidationEvents) => (
           <Tbody>
             <Tr>
               <Td>{formatDate(blockTime)}</Td>
@@ -63,8 +63,8 @@ const Liquidations = () => {
                 ...
                 {from ? from.substring(38, 42) : ''}
               </Td>
-              <Td>{amount}</Td>
-              <Td></Td>
+              <Td>{formatNum(amount)} {cTokenSymbol}</Td>
+              <Td>{cTokenSymbol.toLowerCase()}</Td>
               <Td></Td>
               <Td></Td>
               <Td></Td>
