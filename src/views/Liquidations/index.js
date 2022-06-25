@@ -10,7 +10,8 @@ import {
   TableCaption,
   TableContainer,
   Tooltip,
-  Image
+  Image,
+  Center
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
@@ -36,8 +37,9 @@ const Liquidations = () => {
   
 
   return (
- <TableContainer mt={15}>
-      <Table variant='simple' fontSize={14}>
+    <Center>
+    <TableContainer mt={15}>
+      <Table variant='simple' fontSize={14} size='lg'>
         {/*<TableCaption></TableCaption>*/}
         <Thead>
           <Tr>
@@ -49,9 +51,9 @@ const Liquidations = () => {
             <Th>Liquidator</Th>
             <Th textAlign='center'>Collateral Repaid</Th>
             {/*<Th>Collateral</Th>*/}
+  {/*          <Th></Th>
             <Th></Th>
-            <Th></Th>
-            <Th></Th>
+            <Th></Th>*/}
           </Tr>
         </Thead>
         {liquidationsLoading 
@@ -83,9 +85,9 @@ const Liquidations = () => {
               </Td>
               <Td textAlign='center'>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
               {/*<Td>{underlyingSymbol}</Td>*/}
+     {/*         <Td></Td>
               <Td></Td>
-              <Td></Td>
-              <Td></Td>
+              <Td></Td>*/}
             </Tr>
           </Tbody>
           )
@@ -101,6 +103,7 @@ const Liquidations = () => {
         </Tfoot>
       </Table>
     </TableContainer>
+    </Center>
   )
 }
 

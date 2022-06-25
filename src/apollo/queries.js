@@ -37,8 +37,6 @@ export const TOKENS_DATA = gql`
       borrowRate
       totalBorrows
       borrowIndex
-
-
     }
   }
 `

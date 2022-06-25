@@ -26,7 +26,7 @@ const TabsGroup = () => {
         <TabPanel>
           <Tokens />
         </TabPanel>
-        <TabPanel>
+        <TabPanel >
           <Liquidations />
         </TabPanel>
       </TabPanels>
