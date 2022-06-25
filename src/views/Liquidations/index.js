@@ -10,7 +10,8 @@ import {
   Th,
   Td,
   TableCaption,
-  TableContainer
+  TableContainer,
+  Link
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
@@ -82,17 +83,21 @@ const Liquidations = () => {
               <Tr>
                 <Td>{formatDate(blockTime)}</Td>
                 <Td>
-                  {from ? from.substring(0, 6) : '0x0'}
-                  ...
-                  {from ? from.substring(38, 42) : ''}
+                  <Link href={'https://etherscan.io/address/' + from} isExternal>
+                    {from ? from.substring(0, 6) : '0x0'}
+                    ...
+                    {from ? from.substring(38, 42) : ''}
+                  </Link>
                 </Td>
                 <Td>{underlyingSymbol}</Td>
-                <Td>{formatNum(amount)} {cTokenSymbol}</Td>
+                <Td fontWeight='extrabold'>{formatNum(amount)} {cTokenSymbol}</Td>
                 <Td>{cTokenSymbol}</Td>
                 <Td>
-                  {to ? to.substring(0, 6) : '0x0'}
-                  ...
-                  {to ? to.substring(38, 42) : ''}
+                  <Link href={'https://etherscan.io/address/' + to} isExternal>
+                    {to ? to.substring(0, 6) : '0x0'}
+                    ...
+                    {to ? to.substring(38, 42) : ''}
+                  </Link>
                 </Td>
                 <Td textAlign='center'>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
                 <Td textAlign='center'>

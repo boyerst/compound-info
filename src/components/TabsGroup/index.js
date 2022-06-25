@@ -10,12 +10,12 @@ import Liquidations from '../../views/Liquidations'
 const TabsGroup = () => {
 
   return (
-    <Tabs mt={30} defaultIndex={1}>
+    <Tabs mt={30}>
       <TabList>
         <Image src={Logo} htmlHeight='50' htmlWidth='50' mx={3} mb={2} mr={4} pointerEvents="none" />
-        <Tab>One</Tab>
-        <Tab>Tokens</Tab>
-        <Tab>Liquidations</Tab>
+        <Tab fontWeight='bold'>One</Tab>
+        <Tab fontWeight='bold'>Tokens</Tab>
+        <Tab fontWeight='bold'>Liquidations</Tab>
       </TabList>
 
       <TabPanels>
