@@ -101,9 +101,11 @@ const Liquidations = () => {
                 </Td>
                 <Td textAlign='center'>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
                 <Td textAlign='center'>
-                  {id ? id.substring(0, 6) : '0x0'}
-                  ...
-                  {id ? id.substring(62, 70) : ''}
+                  <Link href={'https://etherscan.io/tx/' + id.substring(0, 66)} isExternal>
+                    {id ? id.substring(0, 6) : '0x0'}
+                    ...
+                    {id ? id.substring(62, 70) : ''}
+                  </Link>
                 </Td>
               </Tr>
             </Tbody>
