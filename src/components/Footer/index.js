@@ -20,6 +20,7 @@ const Footer = () => {
         maxW={'9xl'}
         px={8}
         pb={10}
+        mt={50}
         sx={{position: 'absolute', bottom: '0'}}
         direction={{ base: 'column', md: 'row' }}
         justify={{ base: 'center', md: 'space-between' }}
