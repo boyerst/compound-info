@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import {
+  Box,
+  Spinner,
   Table,
   Thead,
   Tbody,
@@ -8,12 +10,7 @@ import {
   Th,
   Td,
   TableCaption,
-  TableContainer,
-  Tooltip,
-  Image,
-  Center,
-  Spinner,
-  Flex
+  TableContainer
 } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
@@ -40,7 +37,7 @@ const Liquidations = () => {
 
 
   return (
-    <Center>
+    <Box>
     {
       liquidationsLoading 
       ? 
@@ -56,7 +53,7 @@ const Liquidations = () => {
           top: '50%'}}
       />
       : 
-      <TableContainer mt={20} mb={200}>
+      <TableContainer mt={15} mb={200}>
         <Table variant='simple' fontSize={14} size='lg'>
           {/*<TableCaption></TableCaption>*/}
           <Thead>
@@ -119,7 +116,7 @@ const Liquidations = () => {
         </Table>
       </TableContainer>
     }
-    </Center>
+    </Box>
   )
 }
 

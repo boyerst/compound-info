@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import {
+  Box, 
+  Spinner,
   Table,
   Thead,
   Tbody,
@@ -54,76 +56,93 @@ const Tokens = () => {
   console.log(AaveName)
 
 
-
   return (
-    <TableContainer mt={15} mb={200}>
-      <Table variant='simple' fontSize={14} size='lg'>
-        {/*<TableCaption></TableCaption>*/}
-        <Thead>
-          <Tr>
-            <Th>Asset</Th>
-            <Th>Symbol</Th>
-            <Th>Price</Th>
-            <Th textAlign='center'>TVL (Ξ)</Th>
-            <Th>cToken</Th>
-            <Th textAlign='center'>Supply Rate (Annual)</Th>
-            <Th textAlign='center'>Borrow Rate (Annual)</Th>
-            <Th>Total Borrowed</Th>
-            <Th>
-              Borrow Index
-              <Tooltip hasArrow placement='auto' closeDelay={500} label='The history of the markets borrow index return (Think S&P 500)'>
-                <InfoOutlineIcon ml={1} mb={1}/>
-              </Tooltip>
-            </Th>
-
-          </Tr>
-        </Thead>
-        {tokensLoading 
-          ? 'Loading Tokens...' 
-          : tokensData.markets.map(({ 
-              id, 
-              cash, 
-              name, 
-              symbol, 
-              underlyingSymbol, 
-              underlyingName, 
-              underlyingPriceUSD, 
-              supplyRate, 
-              borrowRate, 
-              totalBorrows, 
-              borrowIndex 
-            } : tokensData_markets) => (
-          <Tbody  key={id}>
+    <Box>
+    {
+      tokensLoading 
+      ? 
+      <Spinner 
+        size='xl'
+        thickness='5px'
+        label='Loading...'
+        speed='3.65s'
+        emptyColor='gray.200'
+        color='#00E699'
+        sx={{ 
+          position: 'absolute',
+          top: '50%'}}
+      />
+      : 
+      <TableContainer mt={15} mb={200}>
+        <Table variant='simple' fontSize={14} size='lg'>
+          {/*<TableCaption></TableCaption>*/}
+          <Thead>
             <Tr>
-              <Td fontWeight='extrabold'>{underlyingName}</Td>
-              <Td sx={{display: 'flex'}}>
-                <Image src={AaveKey} mr={1} htmlHeight='15' htmlWidth='15'/>
-                {underlyingSymbol}
-              </Td>
-              <Td>$ {formatNum(underlyingPriceUSD)}</Td>
-              <Td>{formatNum(cash)}</Td>
-              <Td>{symbol}</Td>
-              <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
-              <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
-              <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
-              <Td textAlign='center'>{formatNum(borrowIndex)}</Td>
+              <Th>Asset</Th>
+              <Th>Symbol</Th>
+              <Th>Price</Th>
+              <Th textAlign='center'>TVL (Ξ)</Th>
+              <Th>cToken</Th>
+              <Th textAlign='center'>Supply Rate (Annual)</Th>
+              <Th textAlign='center'>Borrow Rate (Annual)</Th>
+              <Th>Total Borrowed</Th>
+              <Th>
+                Borrow Index
+                <Tooltip hasArrow placement='auto' closeDelay={500} label='The history of the markets borrow index return (Think S&P 500)'>
+                  <InfoOutlineIcon ml={1} mb={1}/>
+                </Tooltip>
+              </Th>
+
             </Tr>
-          </Tbody>
-          )
-        )}
-        <Tfoot>
-          <Tr>
-            <Th></Th>
-            <Th></Th>
-            <Th></Th>
-            <Th></Th>
-            <Th></Th>
-          </Tr>
-        </Tfoot>
-      </Table>
-    </TableContainer>
+          </Thead>
+          {tokensData.markets.map(({ 
+                id, 
+                cash, 
+                name, 
+                symbol, 
+                underlyingSymbol, 
+                underlyingName, 
+                underlyingPriceUSD, 
+                supplyRate, 
+                borrowRate, 
+                totalBorrows, 
+                borrowIndex 
+              } : tokensData_markets) => (
+            <Tbody  key={id}>
+              <Tr>
+                <Td fontWeight='extrabold'>{underlyingName}</Td>
+                <Td sx={{display: 'flex'}}>
+                  <Image src={AaveKey} mr={1} htmlHeight='15' htmlWidth='15'/>
+                  {underlyingSymbol}
+                </Td>
+                <Td>$ {formatNum(underlyingPriceUSD)}</Td>
+                <Td>{formatNum(cash)}</Td>
+                <Td>{symbol}</Td>
+                <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
+                <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
+                <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
+                <Td textAlign='center'>{formatNum(borrowIndex)}</Td>
+              </Tr>
+            </Tbody>
+            )
+          )}
+          <Tfoot>
+            <Tr>
+              <Th></Th>
+              <Th></Th>
+              <Th></Th>
+              <Th></Th>
+              <Th></Th>
+            </Tr>
+          </Tfoot>
+        </Table>
+      </TableContainer>
+    }
+  </Box>
   )
 }
+
+
 
 
 
