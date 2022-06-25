@@ -43,12 +43,12 @@ const Liquidations = () => {
           <Tr>
             <Th>Time</Th>
             <Th>Liquidatee</Th>
-            <Th>Loan Asset</Th>
-            <Th textTransform='none'>AMOUNT SEIZED (cTOKENS)</Th>
+            <Th>Collateral</Th>
+            <Th textTransform='none'>cTOKENS SEIZED</Th>
             <Th textTransform='none'>cTOKEN</Th>
             <Th>Liquidator</Th>
-            <Th>Amount Repaid (Collateral)</Th>
-            <Th>Collateral</Th>
+            <Th textAlign='center'>Collateral Repaid</Th>
+            {/*<Th>Collateral</Th>*/}
             <Th></Th>
             <Th></Th>
             <Th></Th>
@@ -76,9 +76,13 @@ const Liquidations = () => {
               <Td>{underlyingSymbol}</Td>
               <Td>{formatNum(amount)} {cTokenSymbol}</Td>
               <Td>{cTokenSymbol}</Td>
-              <Td>{to}</Td>
-              <Td>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
-              <Td>{underlyingSymbol}</Td>
+              <Td>
+                {to ? to.substring(0, 6) : '0x0'}
+                ...
+                {to ? to.substring(38, 42) : ''}
+              </Td>
+              <Td textAlign='center'>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
+              {/*<Td>{underlyingSymbol}</Td>*/}
               <Td></Td>
               <Td></Td>
               <Td></Td>
