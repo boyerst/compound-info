@@ -56,7 +56,7 @@ const Tokens = () => {
 
 
   return (
-    <TableContainer mt={15}>
+    <TableContainer mt={15} mb={200}>
       <Table variant='simple' fontSize={14}>
         {/*<TableCaption></TableCaption>*/}
         <Thead>

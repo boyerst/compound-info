@@ -19,13 +19,9 @@ const Footer = () => {
         as={Stack}
         maxW={'9xl'}
         px={8}
-        pt={110}
         pb={10}
-        // sx={{marginTop: 'auto'}}
         direction={{ base: 'column', md: 'row' }}
-        // spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
-        // align={{ base: 'center', md: 'center' }}
         align={'center'}
       >
       <Text fontSize={12}>© 2022 Compound.Info</Text>
