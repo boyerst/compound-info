@@ -11,8 +11,10 @@ import {
   Td,
   TableCaption,
   TableContainer,
-  Link
+  Link, 
+  Tooltip
 } from '@chakra-ui/react'
+import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { useQuery } from "@apollo/client"
 import { LIQUIDATIONS_DATA } from '../../apollo/queries.js'
 import { formatDate, formatNum } from '../../utils'
@@ -65,7 +67,12 @@ const Liquidations = () => {
               <Th textTransform='none'>cTOKENS SEIZED</Th>
               <Th textTransform='none'>cTOKEN</Th>
               <Th>Liquidator</Th>
-              <Th textAlign='center'>Collateral Repaid</Th>
+              <Th textAlign='center'>
+                Collateral Repaid
+                <Tooltip hasArrow placement='auto' closeDelay={500} label='Underlying cToken amount that was repaid by liquidator'>
+                  <InfoOutlineIcon ml={1} mb={1}/>
+                </Tooltip>
+              </Th>
               <Th>Tx Hash - Log Index</Th>
             </Tr>
           </Thead>
