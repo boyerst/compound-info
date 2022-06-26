@@ -65,7 +65,6 @@ const Liquidations = () => {
               <Th>Liquidatee</Th>
               <Th>Collateral</Th>
               <Th textTransform='none'>cTOKENS SEIZED</Th>
-              <Th textTransform='none'>cTOKEN</Th>
               <Th>Liquidator</Th>
               <Th textAlign='center'>
                 Collateral Repaid
@@ -98,7 +97,6 @@ const Liquidations = () => {
                 </Td>
                 <Td>{underlyingSymbol}</Td>
                 <Td fontWeight='bold'>{formatNum(amount)} {cTokenSymbol}</Td>
-                <Td>{cTokenSymbol}</Td>
                 <Td>
                   <Link href={'https://etherscan.io/address/' + to} _hover={{ color: '#00E699' }} isExternal>
                     {to ? to.substring(0, 6) : '0x0'}
