@@ -4,6 +4,7 @@ import Logo from '../../assets/compound.png';
 import Compound from '../../views/Compound'
 import Tokens from '../../views/Tokens'
 import Liquidations from '../../views/Liquidations'
+import Whales from '../../views/Whales'
 
 
 
@@ -16,6 +17,7 @@ const TabsGroup = () => {
         <Tab fontWeight='bold'>One</Tab>
         <Tab fontWeight='bold'>Tokens</Tab>
         <Tab fontWeight='bold'>Liquidations</Tab>
+        <Tab fontWeight='bold'>Whales</Tab>
       </TabList>
 
       <TabPanels>
@@ -26,8 +28,11 @@ const TabsGroup = () => {
         <TabPanel>
           <Tokens />
         </TabPanel>
-        <TabPanel >
+        <TabPanel>
           <Liquidations />
+        </TabPanel>
+        <TabPanel>
+          <Whales />
         </TabPanel>
       </TabPanels>
     </Tabs>      
