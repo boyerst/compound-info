@@ -85,7 +85,7 @@ const Tokens = () => {
               <Th textAlign='center'>TVL (USD)</Th>
               <Th textAlign='center'>Supply Rate (Annual)</Th>
               <Th textAlign='center'>Borrow Rate (Annual)</Th>
-              <Th>Total Borrowed</Th>
+              <Th textAlign='center'>Total Borrowed</Th>
               <Th>
                 Borrow Index
                 <Tooltip hasArrow placement='auto' closeDelay={500} label='The history of the markets borrow index return (Think S&P 500)'>
@@ -117,11 +117,11 @@ const Tokens = () => {
                   {underlyingSymbol}
                 </Td>
                 <Td>$ {formatNum(underlyingPriceUSD)}</Td>
-                <Td>{formatNum(cash)}</Td>
-                <Td>$ {formatNum(underlyingPriceUSD * cash)}</Td>
+                <Td isNumeric>{formatNum(cash)}</Td>
+                <Td isNumeric>$ {formatNum(underlyingPriceUSD * cash)}</Td>
                 <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
                 <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
-                <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
+                <Td isNumeric>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
                 <Td textAlign='center'>{formatNum(borrowIndex)}</Td>
                 <Td>{symbol}</Td>
               </Tr>
