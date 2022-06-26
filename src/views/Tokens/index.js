@@ -74,16 +74,15 @@ const Tokens = () => {
       />
       : 
       <TableContainer mt={15} mb={200}>
-        <Table variant='simple' fontSize={14} size='lg'>
+        <Table variant='simple' fontSize={14} size='md'>
           {/*<TableCaption></TableCaption>*/}
           <Thead>
             <Tr>
               <Th>Asset</Th>
-              <Th>Symbol</Th>
+              <Th>Token</Th>
               <Th>Price</Th>
+              <Th textAlign='center'>TVL (Token)</Th>
               <Th textAlign='center'>TVL (USD)</Th>
-              <Th textAlign='center'>TVL (Underlying)</Th>
-              <Th>cToken</Th>
               <Th textAlign='center'>Supply Rate (Annual)</Th>
               <Th textAlign='center'>Borrow Rate (Annual)</Th>
               <Th>Total Borrowed</Th>
@@ -93,6 +92,7 @@ const Tokens = () => {
                   <InfoOutlineIcon ml={1} mb={1}/>
                 </Tooltip>
               </Th>
+              <Th>cToken</Th>
 
             </Tr>
           </Thead>
@@ -117,13 +117,13 @@ const Tokens = () => {
                   {underlyingSymbol}
                 </Td>
                 <Td>$ {formatNum(underlyingPriceUSD)}</Td>
-                <Td>$ {formatNum(underlyingPriceUSD * cash)}</Td>
                 <Td>{formatNum(cash)}</Td>
-                <Td>{symbol}</Td>
+                <Td>$ {formatNum(underlyingPriceUSD * cash)}</Td>
                 <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
                 <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
                 <Td>{formatNum(totalBorrows)} {underlyingSymbol}</Td>
                 <Td textAlign='center'>{formatNum(borrowIndex)}</Td>
+                <Td>{symbol}</Td>
               </Tr>
             </Tbody>
             )
