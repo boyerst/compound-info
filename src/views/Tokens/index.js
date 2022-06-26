@@ -81,7 +81,8 @@ const Tokens = () => {
               <Th>Asset</Th>
               <Th>Symbol</Th>
               <Th>Price</Th>
-              <Th textAlign='center'>TVL (Ξ)</Th>
+              <Th textAlign='center'>TVL (USD)</Th>
+              <Th textAlign='center'>TVL (Underlying)</Th>
               <Th>cToken</Th>
               <Th textAlign='center'>Supply Rate (Annual)</Th>
               <Th textAlign='center'>Borrow Rate (Annual)</Th>
@@ -110,12 +111,13 @@ const Tokens = () => {
               } : tokensData_markets) => (
             <Tbody  key={id}>
               <Tr>
-                <Td fontWeight='extrabold'>{underlyingName}</Td>
+                <Td fontWeight='bold'>{underlyingName}</Td>
                 <Td sx={{display: 'flex'}}>
                   <Image src={AaveKey} mr={1} htmlHeight='15' htmlWidth='15'/>
                   {underlyingSymbol}
                 </Td>
                 <Td>$ {formatNum(underlyingPriceUSD)}</Td>
+                <Td>$ {formatNum(underlyingPriceUSD * cash)}</Td>
                 <Td>{formatNum(cash)}</Td>
                 <Td>{symbol}</Td>
                 <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
