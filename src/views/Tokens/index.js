@@ -33,31 +33,18 @@ const Tokens = () => {
 
   
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
-  // const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
-  //   fetchPolicy: 'cache-and-network', onCompleted: setTimer(new Date().toLocalTimeString()) })
-  const tokens = tokensData && tokensData.markets
+    fetchPolicy: 'cache-and-network', onCompleted: queryNotification})
 
   console.log(tokensData)
 
-  // const [timer, setTimer] = useState()
-
   useEffect(() => {
-    tokensPolling(1000)
+    tokensPolling(100)
   })
-
 
   // Temporary functions until find pollInterval fix
   function queryNotification() {
     console.log("Queried TOKENS_DATA")
-    const timer = new Date().toLocaleTimeString()
-    console.log("Last Updated: ", timer)
-    // setUpdateTimer(timer)
-    // 🔥 NEED TO useState?!
-    // return timer
-    
   }
-
 
   // Working logic to insert Token icons into Symbol column
   function importAll(r) {
@@ -92,7 +79,7 @@ const Tokens = () => {
       : 
       <TableContainer mt={15} mb={200}>
         <Table variant='simple' fontSize={14} size='md'>
-          {/*<TableCaption></TableCaption>*/}
+          <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
               <Th>Asset</Th>
