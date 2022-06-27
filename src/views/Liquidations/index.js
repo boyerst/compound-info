@@ -23,7 +23,7 @@ import { formatDate, formatNum } from '../../utils'
 const Liquidations = () => {
 
   const { loading: liquidationsLoading, error: liquidationsError, data: liquidationsData, startPolling: liquidationsPolling } = useQuery(LIQUIDATIONS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: updateMe() })
+    fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
   const liquidations = liquidationsData && liquidationsData.markets
 
   console.log(liquidationsData)
@@ -33,7 +33,7 @@ const Liquidations = () => {
   })
   
   // Temporary functions until find pollInterval fix
-  function updateMe() {
+  function queryNotification() {
     console.log("Queried LIQUIDATIONS_DATA")
   }
   
@@ -85,7 +85,7 @@ const Liquidations = () => {
                 underlyingSymbol,
                 id 
               } : liquidationsData_liquidationEvents) => (
-            <Tbody>
+            <Tbody key={id}>
               <Tr>
                 <Td>{formatDate(blockTime)}</Td>
                 <Td>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box, 
   Spinner,
@@ -17,8 +17,12 @@ import {
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { useQuery } from "@apollo/client"
 import { TOKENS_DATA } from '../../apollo/queries.js'
-import { formatNum } from '../../utils'
-import { formatPercentage } from '../../utils'
+import { formatNum, formatPercentage } from '../../utils'
+
+
+
+
+
 
 
 
@@ -27,20 +31,33 @@ import { formatPercentage } from '../../utils'
 
 const Tokens = () => {
 
+  
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: updateMe() })
+    fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
+  // const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
+  //   fetchPolicy: 'cache-and-network', onCompleted: setTimer(new Date().toLocalTimeString()) })
   const tokens = tokensData && tokensData.markets
 
   console.log(tokensData)
+
+  // const [timer, setTimer] = useState()
 
   useEffect(() => {
     tokensPolling(1000)
   })
 
+
   // Temporary functions until find pollInterval fix
-  function updateMe() {
+  function queryNotification() {
     console.log("Queried TOKENS_DATA")
+    const timer = new Date().toLocaleTimeString()
+    console.log("Last Updated: ", timer)
+    // setUpdateTimer(timer)
+    // 🔥 NEED TO useState?!
+    // return timer
+    
   }
+
 
   // Working logic to insert Token icons into Symbol column
   function importAll(r) {
