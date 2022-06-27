@@ -11,7 +11,7 @@ import Whales from '../../views/Whales'
 const TabsGroup = () => {
 
   return (
-    <Tabs mt={30}>
+    <Tabs mt={30} defaultIndex={3}>
       <TabList>
         <Image src={Logo} htmlHeight='50' htmlWidth='50' mx={3} mb={2} mr={4} pointerEvents="none" />
         <Tab fontWeight='bold'>One</Tab>

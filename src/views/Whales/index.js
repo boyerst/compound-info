@@ -60,38 +60,40 @@ const Whales = () => {
           <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
+              <Th>Time</Th>
+              <Th>Whale</Th>
+              <Th>Loan Amount</Th>
+              <Th>Tx Hash - Log Index</Th>
+              <Th>Total Outstanding Loan</Th>
             </Tr>
           </Thead>
           {whalesData.borrowEvents.map(({ 
-            id,
-            borrower,
-            accountBorrows,
             blockTime,
+            borrower,
+            amount,
             underlyingSymbol,
-            amount
+            id,
+            accountBorrows
               } : whalesData_borrowEvents) => (
             <Tbody key={id}>
               <Tr>
                 <Td>{formatDate(blockTime)}</Td>
                 <Td>
-{/*                  <Link href={'https://etherscan.io/address/' + } _hover={{ color: '#00E699' }} isExternal>
-                    {from ? from.substring(0, 6) : '0x0'}
+                  <Link href={'https://etherscan.io/address/' + borrower} _hover={{ color: '#00E699' }} isExternal>
+                    {borrower ? borrower.substring(0, 6) : '0x0'}
                     ...
-                    {from ? from.substring(38, 42) : ''}
-                  </Link>*/}
+                    {borrower ? borrower.substring(38, 42) : ''}
+                  </Link>
                 </Td>
-                <Td>{underlyingSymbol}</Td>
-                <Td></Td>
-                <Td></Td>
-                <Td></Td>
-                <Td></Td>
+                <Td>{formatNum(amount)} {underlyingSymbol}</Td>
+                <Td>
+                  <Link href={'https://etherscan.io/tx/' + id.substring(0, 66)} _hover={{ color: '#00E699' }} isExternal >
+                    {id ? id.substring(0, 6) : '0x0'}
+                    ...
+                    {id ? id.substring(62, 70) : ''}
+                  </Link>
+                </Td>
+                <Td>{formatNum(accountBorrows)} {underlyingSymbol}</Td>
               </Tr>
             </Tbody>
             )
