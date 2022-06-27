@@ -24,9 +24,8 @@ const Liquidations = () => {
 
   const { loading: liquidationsLoading, error: liquidationsError, data: liquidationsData, startPolling: liquidationsPolling } = useQuery(LIQUIDATIONS_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
-  const liquidations = liquidationsData && liquidationsData.markets
 
-  console.log(liquidationsData)
+  console.log("Liquidations Data: ", liquidationsData)
 
   useEffect(() => {
     liquidationsPolling(1000)
@@ -57,8 +56,8 @@ const Liquidations = () => {
       />
       : 
       <TableContainer mt={15} mb={200}>
-        <Table variant='simple' fontSize={14} size='lg'>
-          {/*<TableCaption></TableCaption>*/}
+        <Table variant='simple' fontSize={14} size='md'>
+          <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
               <Th>Time</Th>

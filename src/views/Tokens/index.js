@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Box, 
   Spinner,
@@ -22,23 +22,16 @@ import { formatNum, formatPercentage } from '../../utils'
 
 
 
-
-
-
-
-
-
-
 const Tokens = () => {
 
   
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: queryNotification})
 
-  console.log(tokensData)
+  console.log("Tokens Data: ", tokensData)
 
   useEffect(() => {
-    tokensPolling(100)
+    tokensPolling(1000)
   })
 
   // Temporary functions until find pollInterval fix
