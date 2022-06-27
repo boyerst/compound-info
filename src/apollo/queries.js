@@ -58,6 +58,19 @@ export const LIQUIDATIONS_DATA = gql`
 `
 
 
+export const BORROWS_DATA = gql`  
+  query borrowsData {
+    borrowEvents (first: 10, orderBy: amount, orderDirection: desc, where: {amount_gte: 100000}) {
+      id
+      borrower
+      accountBorrows
+      blockTime
+      underlyingSymbol
+      amount
+    }
+  }
+`
+
 
 
 
