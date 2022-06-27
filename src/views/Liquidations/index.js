@@ -57,6 +57,7 @@ const Liquidations = () => {
       : 
       <TableContainer mt={15} mb={200}>
         <Table variant='simple' fontSize={14} size='md'>
+          <TableCaption fontSize={20} fontWeight='bold' placement='top' textAlign='left' mb={18}>Last 100 Liquidations</TableCaption>
           <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
@@ -104,7 +105,7 @@ const Liquidations = () => {
                   </Link>
                 </Td>
                 <Td textAlign='center'>{formatNum(underlyingRepayAmount)} {underlyingSymbol}</Td>
-                <Td textAlign='center'>
+                <Td>
                   <Link href={'https://etherscan.io/tx/' + id.substring(0, 66)} _hover={{ color: '#00E699' }} isExternal >
                     {id ? id.substring(0, 6) : '0x0'}
                     ...
