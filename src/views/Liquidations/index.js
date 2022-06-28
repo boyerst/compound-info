@@ -118,11 +118,18 @@ const Liquidations = () => {
           )}
           <Tfoot>
             <Tr>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
+              <Th>Time</Th>
+              <Th>Liquidatee</Th>
+              <Th>Collateral</Th>
+              <Th textTransform='none'>cTOKENS SEIZED</Th>
+              <Th>Liquidator</Th>
+              <Th textAlign='center'>
+                Collateral Repaid
+                <Tooltip hasArrow placement='auto' closeDelay={500} label='Underlying cToken amount that was repaid by liquidator'>
+                  <InfoOutlineIcon ml={1} mb={1}/>
+                </Tooltip>
+              </Th>
+              <Th>Tx Hash - Log Index</Th>
             </Tr>
           </Tfoot>
         </Table>

@@ -22,6 +22,7 @@ import { formatNum, formatPercentage } from '../../utils'
 
 
 
+
 const Tokens = () => {
 
   
@@ -90,7 +91,6 @@ const Tokens = () => {
                 </Tooltip>
               </Th>
               <Th>cToken</Th>
-
             </Tr>
           </Thead>
           {tokensData.markets.map(({ 
@@ -115,7 +115,7 @@ const Tokens = () => {
                 </Td>
                 <Td>$ {formatNum(underlyingPriceUSD)}</Td>
                 <Td isNumeric>{formatNum(cash)}</Td>
-                <Td isNumeric>$ {formatNum(underlyingPriceUSD * cash)}</Td>
+                <Td isNumeric fontWeight='bold'>$ {formatNum(underlyingPriceUSD * cash)}</Td>
                 <Td textAlign='center'>{formatPercentage(supplyRate)} %</Td>
                 <Td textAlign='center'>{formatPercentage(borrowRate)} %</Td>
                 <Td isNumeric>{formatNum(totalBorrows)} {underlyingSymbol}</Td>

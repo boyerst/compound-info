@@ -57,7 +57,7 @@ const Whales = () => {
       : 
       <TableContainer mt={15} mb={200}>
         <Table variant='simple' fontSize={14} size='md'>
-          <TableCaption fontSize={20} fontWeight='bold' placement='top' textAlign='left' mb={18}>Borrows ≥ $100,000</TableCaption>
+          <TableCaption fontSize={20} fontWeight='bold' placement='top' textAlign='left' mb={18}>🐋 Last 100 Borrows ≥ $100,000</TableCaption>
           <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
@@ -101,11 +101,11 @@ const Whales = () => {
           )}
           <Tfoot>
             <Tr>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
+              <Th>Time</Th>
+              <Th>Whale</Th>
+              <Th>Loan Amount</Th>
+              <Th>Tx Hash - Log Index</Th>
+              <Th>Total Outstanding Loan</Th>            
             </Tr>
           </Tfoot>
         </Table>
