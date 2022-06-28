@@ -20,6 +20,9 @@ import { TOKENS_DATA } from '../../apollo/queries.js'
 import { formatNum, formatPercentage } from '../../utils'
 
 
+import AAVE from '../../assets/AAVE.svg'
+
+
 
 
 
@@ -47,11 +50,14 @@ const Tokens = () => {
     return images
   }
   const images = importAll(require.context('../../assets', false, /\.(png|jpe?g|svg)$/));
-  console.log(images)
+  console.log("images: ", images)
   const AaveKey = images[Object.keys(images)[0]]
   const AaveName = Object.keys(images)[0]
-  console.log(AaveKey)
-  console.log(AaveName)
+  console.log("AaveKey: ", AaveKey)
+  console.log("AaveName: ", AaveName)
+
+
+
 
 
   return (
