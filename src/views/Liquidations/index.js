@@ -23,7 +23,7 @@ import { formatDate, formatNum } from '../../utils'
 const Liquidations = () => {
 
   const { loading: liquidationsLoading, error: liquidationsError, data: liquidationsData, startPolling: liquidationsPolling } = useQuery(LIQUIDATIONS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
+    fetchPolicy: 'cache-and-network', onCompleted: onLiquidationsQuery() })
 
   console.log("Liquidations Data: ", liquidationsData)
 
@@ -32,8 +32,8 @@ const Liquidations = () => {
   })
   
   // Temporary functions until find pollInterval fix
-  function queryNotification() {
-    console.log("Queried LIQUIDATIONS_DATA")
+  function onLiquidationsQuery() {
+    console.log("Queried LIQUIDATIONS_DATA in /Liquidations")
   }
   
 

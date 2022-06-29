@@ -39,39 +39,12 @@ const Header = (props) => {
   const blockNumber = metaData && metaData._meta.block.number
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
-
   const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling: ethPolling } = useQuery(ETH_DATA, { 
     fetchPolicy: 'cache-and-network', onCompleted: onEthQuery() })
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
-
-  function onTokensQuery() {
-    console.log("Queried TOKENS_DATA")
-    let contractsTVL = []
-    for (let i = 0; i < tokensData.markets.length; i++) {
-      const contractBalance = tokensData.markets[i].cash
-      const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
-      const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
-      console.log("tokenTVLUSD: ", contractTVLUSD)
-      contractsTVL.push(contractTVLUSD)
-      console.log(contractsTVL)
-      const compoundTVLUSD = contractsTVL.reduce((a, b) => {
-        return a + b  
-      })
-      console.log("CompoundTVL: ", compoundTVLUSD)
-      return compoundTVLUSD
-    }
-  }
-
-  console.log(onTokensQuery())
-
-
-  useEffect(() => {
-    ethPolling(1000)
-    metaPolling(1000)
-  })
 
   // Temporary functions until find pollInterval fix
   function onEthQuery() {
@@ -81,7 +54,26 @@ const Header = (props) => {
     console.log("Queried META_DATA")
   }
 
+  function onTokensQuery() {
+    console.log("Queried TOKENS_DATA in /Header")
+    let contractsTVL = []
+    for (let i = 0; i < tokensData.markets.length; i++) {
+      const contractBalance = tokensData.markets[i].cash
+      const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
+      const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
+      contractsTVL.push(contractTVLUSD)
+      const compoundTVLUSD = contractsTVL.reduce((a, b) => {
+        return a + b  
+      })
+      return compoundTVLUSD
+    }
+  }
 
+  useEffect(() => {
+    ethPolling(1000)
+    metaPolling(1000)
+    tokensPolling(1000)
+  })
 
 
   return (

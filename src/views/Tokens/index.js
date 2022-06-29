@@ -30,7 +30,7 @@ const Tokens = () => {
 
   
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: onQuery})
+    fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
 
   console.log("Tokens Data: ", tokensData)
 
@@ -39,8 +39,8 @@ const Tokens = () => {
     console.log("POLLED")
   })
 
-  function onQuery() {
-    console.log("Queried TOKENS_DATA")
+  function onTokensQuery() {
+    console.log("Queried TOKENS_DATA in /Tokens")
     // let contractsTVL = []
     // for (let i = 0; i < tokensData.markets.length; i++) {
     //   const contractBalance = tokensData.markets[i].cash

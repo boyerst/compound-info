@@ -23,17 +23,17 @@ import { formatDate, formatNum } from '../../utils'
 const Whales = () => {
 
   const { loading: whalesLoading, error: whalesError, data: whalesData, startPolling: whalesPolling } = useQuery(BORROWS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: queryNotification() })
+    fetchPolicy: 'cache-and-network', onCompleted: onBorrowsQuery() })
 
-  console.log("Liquidations Data: ",whalesData)
+  console.log("Liquidations Data: ", whalesData)
 
   useEffect(() => {
     whalesPolling(1000)
   })
   
   // Temporary functions until find pollInterval fix
-  function queryNotification() {
-    console.log("Queried BORROWS_DATA")
+  function onBorrowsQuery() {
+    console.log("Queried BORROWS_DATA in /Whales")
   }
   
 
