@@ -88,16 +88,16 @@ const Header = (props) => {
     <Box>
       <HStack h={10} >
         <Link href={'https://etherscan.io/block/' + blockNumber} isExternal>
-          <Box borderRadius={8} fontSize={12} bg='gray.500' ml={3} px={3}>
+          <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5} ml={3}>
             {metaLoading ?  'Loading...' : 'Latest Synced Block: '} {blockNumber} 
             <CircleIcon mb={.5} ml={1} boxSize={2}/>
           </Box>
         </Link>
-        <Box fontSize={12}>
+        <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5}>
           {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatNum(ethPrice)}
         </Box>
-        <Box fontSize={12}>
-          TVL: $ {formatNum(onTokensQuery())}
+        <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5}>
+          TVL: ${formatNum(onTokensQuery())}
         </Box>
         <Spacer />
         <Link fontSize={16} px={2} href='https://compound.finance/docs' rel='noopener noreferrer' isExternal>
