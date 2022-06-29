@@ -41,23 +41,23 @@ const Tokens = () => {
 
   function onQuery() {
     console.log("Queried TOKENS_DATA")
-    let contractsTVL = []
-    for (let i = 0; i < tokensData.markets.length; i++) {
-      const contractBalance = tokensData.markets[i].cash
-      const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
-      const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
-      console.log("tokenTVLUSD: ", contractTVLUSD)
-      contractsTVL.push(contractTVLUSD)
-      console.log(contractsTVL)
-      const compoundTVLUSD = contractsTVL.reduce((a, b) => {
-        return a + b  
-      })
-      console.log("CompoundTVL: ", compoundTVLUSD)
-      return compoundTVLUSD
-    }
+    // let contractsTVL = []
+    // for (let i = 0; i < tokensData.markets.length; i++) {
+    //   const contractBalance = tokensData.markets[i].cash
+    //   const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
+    //   const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
+    //   console.log("tokenTVLUSD: ", contractTVLUSD)
+    //   contractsTVL.push(contractTVLUSD)
+    //   console.log(contractsTVL)
+    //   const compoundTVLUSD = contractsTVL.reduce((a, b) => {
+    //     return a + b  
+    //   })
+    //   console.log("CompoundTVL: ", compoundTVLUSD)
+    //   return compoundTVLUSD
+    // }
   }
 
-  console.log(onQuery())
+  // console.log(onQuery())
 
 
   // Working logic to insert Token icons into Symbol column

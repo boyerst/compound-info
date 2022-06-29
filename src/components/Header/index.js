@@ -35,14 +35,38 @@ const Header = (props) => {
 
 
   const { loading: metaLoading, error: metaError, data: metaData, startPolling: metaPolling } = useQuery(META_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: updateMeMeta() })
+    fetchPolicy: 'cache-and-network', onCompleted: onMetaQuery() })
   const blockNumber = metaData && metaData._meta.block.number
   const subgraphStatus = metaData && metaData._meta.hasIndexingErrors
 
 
   const { loading: ethDataLoading, error: ethDataError, data: ethData, startPolling: ethPolling } = useQuery(ETH_DATA, { 
-    fetchPolicy: 'cache-and-network', onCompleted: updateMeEth() })
+    fetchPolicy: 'cache-and-network', onCompleted: onEthQuery() })
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
+
+  const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
+    fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
+
+  function onTokensQuery() {
+    console.log("Queried TOKENS_DATA")
+    let contractsTVL = []
+    for (let i = 0; i < tokensData.markets.length; i++) {
+      const contractBalance = tokensData.markets[i].cash
+      const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
+      const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
+      console.log("tokenTVLUSD: ", contractTVLUSD)
+      contractsTVL.push(contractTVLUSD)
+      console.log(contractsTVL)
+      const compoundTVLUSD = contractsTVL.reduce((a, b) => {
+        return a + b  
+      })
+      console.log("CompoundTVL: ", compoundTVLUSD)
+      return compoundTVLUSD
+    }
+  }
+
+  console.log(onTokensQuery())
+
 
   useEffect(() => {
     ethPolling(1000)
@@ -50,10 +74,10 @@ const Header = (props) => {
   })
 
   // Temporary functions until find pollInterval fix
-  function updateMeEth() {
+  function onEthQuery() {
     console.log("Queried ETH_DATA")
   }
-  function updateMeMeta() {
+  function onMetaQuery() {
     console.log("Queried META_DATA")
   }
 
@@ -71,6 +95,9 @@ const Header = (props) => {
         </Link>
         <Box fontSize={12}>
           {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatNum(ethPrice)}
+        </Box>
+        <Box fontSize={12}>
+          TVL: $ {formatNum(onTokensQuery())}
         </Box>
         <Spacer />
         <Link fontSize={16} px={2} href='https://compound.finance/docs' rel='noopener noreferrer' isExternal>
