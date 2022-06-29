@@ -6,13 +6,14 @@ import {
   Box,  
   Link,
   Spacer,
-  HStack
+  HStack, 
+  Code
 } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { formatNum } from '../../utils'
 import { useQuery } from "@apollo/client"
-import { META_DATA, ETH_DATA } from '../../apollo/queries.js'
+import { META_DATA, ETH_DATA, TOKENS_DATA } from '../../apollo/queries.js'
 
 
 
@@ -31,6 +32,7 @@ const Header = (props) => {
       />
     </Icon>
   )
+
 
   const { loading: metaLoading, error: metaError, data: metaData, startPolling: metaPolling } = useQuery(META_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: updateMeMeta() })
@@ -55,7 +57,6 @@ const Header = (props) => {
     console.log("Queried META_DATA")
   }
 
-    
 
 
 

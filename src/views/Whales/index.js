@@ -61,7 +61,7 @@ const Whales = () => {
           <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
-              <Th>Time</Th>
+              <Th>Time ↓</Th>
               <Th>Whale</Th>
               <Th>Loan Amount</Th>
               <Th>Tx Hash - Log Index</Th>

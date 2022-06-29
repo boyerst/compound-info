@@ -39,7 +39,6 @@ const Tokens = () => {
     console.log("POLLED")
   })
 
-
   function onQuery() {
     console.log("Queried TOKENS_DATA")
     let contractsTVL = []
@@ -54,10 +53,11 @@ const Tokens = () => {
         return a + b  
       })
       console.log("CompoundTVL: ", compoundTVLUSD)
+      return compoundTVLUSD
     }
   }
 
-
+  console.log(onQuery())
 
 
   // Working logic to insert Token icons into Symbol column
@@ -72,8 +72,6 @@ const Tokens = () => {
   const AaveName = Object.keys(images)[0]
   console.log("AaveKey: ", AaveKey)
   console.log("AaveName: ", AaveName)
-
-
 
 
 

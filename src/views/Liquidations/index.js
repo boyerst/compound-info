@@ -61,7 +61,7 @@ const Liquidations = () => {
           <TableCaption>Last Updated: {new Date().toLocaleTimeString()}</TableCaption>
           <Thead>
             <Tr>
-              <Th>Time</Th>
+              <Th>Time ↓</Th>
               <Th>Liquidatee</Th>
               <Th>Collateral</Th>
               <Th textTransform='none'>cTOKENS SEIZED</Th>
