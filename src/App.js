@@ -24,7 +24,7 @@ import Footer from './components/Footer'
 
 function App() {
 
-  const [isLanded, setIsLanded] = useState(false)
+  const [isLanded, setIsLanded] = useState(true)
 
   const handleIsLanded = () => {
     setIsLanded(false)

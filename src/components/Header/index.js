@@ -33,6 +33,31 @@ const Header = (props) => {
     </Icon>
   )
 
+  const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
+    fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
+  console.log("Tokens Error: ", tokensError)
+  // console.log("🔥", tokensData.markets)
+
+
+
+  // const compoundTVL = () => {
+  //   console.log("🟢", tokensData)
+  //   // let contractsTVL = []
+  //   // tokensData.markets.map(({ id, cash, underlyingPriceUSD} : tokensData_markets) => {
+  //   //   const contractTVLUSD = Number(cash * underlyingPriceUSD)
+  //   //   contractsTVL.push(contractTVLUSD)  
+  //   //   const compoundTVLUSD = contractsTVL.reduce((a, b) => {
+  //   //     return a + b
+  //   //   })                  
+  //   //   return compoundTVLUSD                    
+  //   // })
+  // }
+
+  // console.log("🔥", compoundTVL())
+
+
+
+
 
   const { loading: metaLoading, error: metaError, data: metaData, startPolling: metaPolling } = useQuery(META_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: onMetaQuery() })
@@ -43,8 +68,6 @@ const Header = (props) => {
     fetchPolicy: 'cache-and-network', onCompleted: onEthQuery() })
   const ethPrice = ethData && ethData.markets[0].underlyingPriceUSD
 
-  const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
-    fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
 
   // Temporary functions until find pollInterval fix
   function onEthQuery() {
@@ -54,20 +77,36 @@ const Header = (props) => {
     console.log("Queried META_DATA")
   }
 
+  // Could be a timing thing? Which is why it wont throw when page is already loaded? ie When you hard refresh it has to fetch ALL data again and might not be ready before it gets to this code?
+  // It's because Tokens is not queried right away so you dont have tokensData upon render since it may already have SAME data cached?
+  // Move all logic to /Tokens and import TVL into header?
+
   function onTokensQuery() {
     console.log("Queried TOKENS_DATA in /Header")
-    let contractsTVL = []
-    for (let i = 0; i < tokensData.markets.length; i++) {
-      const contractBalance = tokensData.markets[i].cash
-      const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
-      const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
-      contractsTVL.push(contractTVLUSD)
-      const compoundTVLUSD = contractsTVL.reduce((a, b) => {
-        return a + b  
-      })
-      return compoundTVLUSD
-    }
+    // compoundTVL()
+    // const tokensArray = tokensData.markets
+    // console.log("tokensData.markets.length: ", tokensArray.length)
+    // console.log("tokensData.markets: ", tokensData.markets)
+    // console.log("tokensData.markets[0].cash: ", tokensData.markets[0].cash)
+    // console.log("tokensData.markets[0].underlyingPriceUSD: ", tokensData.markets[0].underlyingPriceUSD)
+
+    // let contractsTVL = []
+    // for (let i = 0; i < tokensData.markets.length; i++) {
+    //   const contractBalance = tokensData.markets[i].cash
+    //   const underlyingPriceUSD = tokensData.markets[i].underlyingPriceUSD
+    //   const contractTVLUSD = Number(contractBalance * underlyingPriceUSD)
+    //   contractsTVL.push(contractTVLUSD)
+    //   const compoundTVLUSD = contractsTVL.reduce((a, b) => {
+    //     return a + b  
+    //     console.log("‼️", a + b)
+    //   })
+    //   return compoundTVLUSD
+    //   console.log("🔥", compoundTVLUSD)
+    // }
   }
+
+
+
 
   useEffect(() => {
     ethPolling(1000)
@@ -88,9 +127,9 @@ const Header = (props) => {
         <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5}>
           {ethDataLoading ? 'Loading...' : 'ETH Price: '} ${formatNum(ethPrice)}
         </Box>
-        <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5}>
+{/*        <Box borderRadius={12} fontSize={12} border='1px' borderColor='gray.600' px={3} py={.5}>
           TVL: ${formatNum(onTokensQuery())}
-        </Box>
+        </Box>*/}
         <Spacer />
         <Link fontSize={16} px={2} href='https://compound.finance/docs' rel='noopener noreferrer' isExternal>
           Docs

@@ -32,7 +32,7 @@ const Tokens = () => {
   const { loading: tokensLoading, error: tokensError, data: tokensData, startPolling: tokensPolling } = useQuery(TOKENS_DATA, {
     fetchPolicy: 'cache-and-network', onCompleted: onTokensQuery})
 
-  console.log("Tokens Data: ", tokensData)
+  console.log("tokensData in /Tokens: ", tokensData)
 
   useEffect(() => {
     tokensPolling(1000)
@@ -41,23 +41,8 @@ const Tokens = () => {
 
   function onTokensQuery() {
     console.log("Queried TOKENS_DATA in /Tokens")
-    // let contractsTVL = []
-    // for (let i = 0; i < tokensData.markets.length; i++) {
-    //   const contractBalance = tokensData.markets[i].cash
-    //   const underlyingPriceUSDs = tokensData.markets[i].underlyingPriceUSD
-    //   const contractTVLUSD = Number(contractBalance * underlyingPriceUSDs)
-    //   console.log("tokenTVLUSD: ", contractTVLUSD)
-    //   contractsTVL.push(contractTVLUSD)
-    //   console.log(contractsTVL)
-    //   const compoundTVLUSD = contractsTVL.reduce((a, b) => {
-    //     return a + b  
-    //   })
-    //   console.log("CompoundTVL: ", compoundTVLUSD)
-    //   return compoundTVLUSD
-    // }
   }
 
-  // console.log(onQuery())
 
 
   // Working logic to insert Token icons into Symbol column
