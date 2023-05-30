@@ -116,7 +116,7 @@ const Tokens = () => {
               <Tr>
                 <Td fontWeight='bold'>{underlyingName}</Td>
                 <Td sx={{display: 'flex'}}>
-                  <Image src={AaveKey} mr={1} htmlHeight='15' htmlWidth='15'/>
+                  {/*<Image src={AaveKey} mr={1} htmlHeight='15' htmlWidth='15'/>*/}
                   {underlyingSymbol}
                 </Td>
                 <Td>$ {formatNum(underlyingPriceUSD)}</Td>
